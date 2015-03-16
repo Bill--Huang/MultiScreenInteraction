@@ -45,26 +45,26 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\TestConnect.cs" />
- <Reference Include="Assets\Plugins\WebSocket4Net">
- <HintPath>Assets\Plugins\WebSocket4Net.dll</HintPath>
- </Reference>
- <Reference Include="Assets\Plugins\SuperSocket.ClientEngine.Proxy">
- <HintPath>Assets\Plugins\SuperSocket.ClientEngine.Proxy.dll</HintPath>
+ <Reference Include="Assets\Plugins\SimpleJson">
+ <HintPath>Assets\Plugins\SimpleJson.dll</HintPath>
  </Reference>
  <Reference Include="Assets\Plugins\SocketIO">
  <HintPath>Assets\Plugins\SocketIO.dll</HintPath>
  </Reference>
- <Reference Include="Assets\Plugins\SuperSocket.ClientEngine.Core">
- <HintPath>Assets\Plugins\SuperSocket.ClientEngine.Core.dll</HintPath>
- </Reference>
  <Reference Include="Assets\Plugins\SuperSocket.ClientEngine.Common">
  <HintPath>Assets\Plugins\SuperSocket.ClientEngine.Common.dll</HintPath>
+ </Reference>
+ <Reference Include="Assets\Plugins\SuperSocket.ClientEngine.Core">
+ <HintPath>Assets\Plugins\SuperSocket.ClientEngine.Core.dll</HintPath>
  </Reference>
  <Reference Include="Assets\Plugins\SuperSocket.ClientEngine.Protocol">
  <HintPath>Assets\Plugins\SuperSocket.ClientEngine.Protocol.dll</HintPath>
  </Reference>
- <Reference Include="Assets\Plugins\SimpleJson">
- <HintPath>Assets\Plugins\SimpleJson.dll</HintPath>
+ <Reference Include="Assets\Plugins\SuperSocket.ClientEngine.Proxy">
+ <HintPath>Assets\Plugins\SuperSocket.ClientEngine.Proxy.dll</HintPath>
+ </Reference>
+ <Reference Include="Assets\Plugins\WebSocket4Net">
+ <HintPath>Assets\Plugins\WebSocket4Net.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -26,34 +26,51 @@ public class TestConnect : MonoBehaviour {
         this.SetSocketEvent();
 
         this.socket.Connect();
+
 	}
 
+    
     private void SetSocketEvent() {
-        this.socket.On("AppDataEmitEvent", (data) => {
-            Debug.Log("message: " + data);
-        });
+
+        // Can not get all raw message, only data
+        //this.socket.On("AppDataEmitEvent", (data) => {
+        //    Debug.Log("Message Unity: " + data);
+        //});
     }
 
     private void SocketOpened(object sender, EventArgs e) {
-        Debug.Log("socket opened");
+        this.GUIMessage = "SocketOpened";
+        Debug.Log("SocketOpened");
+
+        this.socket.Emit("ServerDataEmitEvent", "App Message");
     }
 
     private void SocketMessage(object sender, MessageEventArgs e) {
-        if (e != null && e.Message.Event == "message") {
-            string msg = e.Message.MessageText;
-            Debug.Log(msg);
-            this.GUIMessage = msg;
+
+        // Event Handler, get all raw message
+        if (e != null && e.Message.Event == "AppDataEmitEvent") {
+            Debug.Log(e.Message.Event);
+            Debug.Log(e.Message.MessageText);
         }
+
+        //this.GUIMessage = "SocketMessage";
+        //Debug.Log("SocketMessage");
     }
 
     private void SocketConnectionClosed(object sender, EventArgs e) {
+        this.GUIMessage = "SocketConnectionClosed";
         Debug.Log("SocketConnectionClosed");
     }
 
     public void SocketError(object sender, ErrorEventArgs e) {
         this.GUIMessage = e.Message.ToString();
         Debug.Log(e.Message.ToString());
-        Debug.Log(e.Exception.Message);
+    }
+
+    void OnApplicationQuit() {
+        this.socket.Close();
+        this.socket.Dispose();
+        Debug.Log("Socket Closed");
     }
 
     void OnGUI() {

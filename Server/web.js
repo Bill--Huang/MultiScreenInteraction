@@ -8,12 +8,16 @@ function connect() {
 
 		socket.on('WebDataEmitEvent', function(data){ 
 			message(data); 
+			// alert(data);
 		});
 
 		socket.on('message', function(data){ 
 			message(data); 
 		});
 		socket.on('connect', function(){ 
+			
+			socket.emit("ServerDataEmitEvent", "Web Message");
+
 			status_update("Connected to Server"); 
 		});
 		socket.on('disconnect', function(){ 
@@ -51,5 +55,5 @@ function esc(msg){
 }
 
 function send() {
-	socket.send("Hello Server!");
+	socket.emit("ServerDataEmitEvent", "Web Message");
 }

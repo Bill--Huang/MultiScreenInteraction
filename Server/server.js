@@ -4,7 +4,7 @@ var fs = require("fs");
 var server;
  
 server = http.createServer(function(req, res){
-    // your normal server code
+    
     var path = url.parse(req.url).pathname;
 
 	console.log("Request URL: " + req.url);
@@ -52,7 +52,7 @@ io.sockets.on("connection", function(socket){
     ConsoleLog("Server", "Connection " + socket.id + " accepted.");
 	
     socket.on("ServerDataEmitEvent", function(message){
-        EventHandler(message);
+        EventHandler(message, socket);
     });
 	
     socket.on("disconnect", function(){
@@ -60,17 +60,18 @@ io.sockets.on("connection", function(socket){
     });
 });
 
-function EventHandler(message) {
+function EventHandler(message, socket) {
 	//
 	ConsoleLog("Server", message);
+	socket.emit("AppDataEmitEvent", "Got");
+	socket.emit("WebDataEmitEvent", "Got");
+	// socket.emit("AppDataEmitEvent", "Got");
 }
-
 
 function ConsoleLog(sender, message) {
 	console.log("\n [" + sender + " Log] ->");
 	console.log(message);
 }
-
 
 function Error404 (res) {
 	res.writeHead(404);
