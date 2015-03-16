@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	<head>
+	<title>Socket.io Test</title>
+	<!-- <script src="/json.js"></script> <!-- for ie --> 
+	
+	</head>
+	<body>
+		<h1>Socket.io Test</h1>
+		<div><p id="status">Waiting for input</p></div>
+		<div><p id="message"></p></div>
+		<button id="connect" onClick='connect()'/>Connect</button>
+		<button id="disconnect" onClick='disconnect()'>Disconnect</button>
+		<button id="send" onClick='send()'/>Send Message</button>
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="web.js"></script>
+	</body>
+</html>
