@@ -5,6 +5,7 @@
     "description": "Socket server and website for system",
     "keywords": [ ],
     "dependencies": {
-        "socket.io": "0.9.x"
+        "socket.io": "0.9.x",
+        "mootools": "1.4.x",
     }
 }

@@ -1,0 +1,11 @@
+{
+    "role": {
+        "webPlayer": "webPlayer",
+        "appGame": "appGame",
+    },
+    "command": {
+        "register": "register",
+        "control": "control",
+        "disconnect": "disconnect",
+    }
+}
