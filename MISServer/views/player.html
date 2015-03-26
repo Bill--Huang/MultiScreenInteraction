@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Player Page</title>
+		<!-- <script src="/json.js"></script> <!-- for ie -->
+		<link rel="stylesheet" href="stylesheets/player.css">
+
+	</head>
+	<body>
+		<!--<h1>Player Page</h1>-->
+		<!--<div><h1 id="game-role">Role</h1></div>-->
+		<!--<div><h1 id="game-status">Waiting for input</h1></div>-->
+		<!--<h2 id="countdown">Count down</h2>-->
+		<!--<h2 id="clickNum">Click</h2>-->
+		<!--<div id="messageButton" style="width: 160px; height: 90px; background-color: #00B7FF; text-align: center; color: white; line-height: 90px">Send</div>-->
+
+		<div id="main-container">
+			<div id="main-container-bg">
+				<div id="text-container">
+					<h2 id="countdown-text"></h2>
+					<h4 id="player-index-text"></h4>
+					<h4 id="game-state-text">点击屏幕，连接游戏</h4>
+					<h2 id="result-text"></h2>
+				</div>
+			</div>
+		</div>
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="javascripts/lib/jquery/jquery.js"></script>
+		<script type="text/javascript" src="javascripts/ServiceBasic.js"></script>
+		<script type="text/javascript" src="javascripts/player.js"></script>
+	</body>
+</html>
