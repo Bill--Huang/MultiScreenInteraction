@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
 		'0': '等待另一名玩家连接游戏',
 		'1': '在倒数 10 秒中，点击屏幕，为汽车蓄能',
 		'2': '游戏结束，刷新页面重新开始'
-	}
+	};
 
 	var waitTime = 10;
 	var click = 0;
