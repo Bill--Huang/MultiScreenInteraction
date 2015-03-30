@@ -1,0 +1,43 @@
+*{
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select:none;
+    -khtml-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    cursor: pointer;
+}
+
+#main-container {
+    height: 100%;
+    width: 100%;
+}
+
+#main-container-bg {
+    height: 100%;
+    background-color: black;
+}
+
+#main-container #text-container {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+#main-container h2, #main-container h4 {
+    color: white;
+    text-align: center;
+    margin: 14px;
+
+}
