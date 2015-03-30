@@ -3,17 +3,18 @@
     <head>
         <title>App Game</title>
         <!-- <script src="/json.js"></script> <!-- for ie -->
-
+        <link rel="stylesheet" href="stylesheets/appgame.css">
     </head>
     <body>
-        <h1>App Game Page</h1>
+        <h1 style="color: white; ">App Game Page</h1>
         <div><h1 id="game-role" style="color: white; ">Role</h1></div>
         <div><h1 id="game-status" style="color: white; ">Waiting for input</h1></div>
         <div id="messageBox0" style="color: white; padding: 3px">Message From Player 0</div>
         <div id="messageBox1" style="color: white; padding: 3px">Message From Player 1</div>
 
-        <canvas id="game-canvas-container" width="800" height="450" style="border: dashed 1px black; position: absolute; left: 0; top: 0; z-index: -1"></canvas>
-
+        <div id="canvas-container">
+            <canvas id="game-canvas-container" width="800" height="450"></canvas>
+        </div>
         <script src="/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="javascripts/lib/jquery/jquery.js"></script>
         <script type="text/javascript" src="javascripts/CanvasDrawer.js"></script>

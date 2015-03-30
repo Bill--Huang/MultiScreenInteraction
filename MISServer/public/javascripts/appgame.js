@@ -4,6 +4,9 @@
 jQuery(document).ready(function ($) {
 
     CanvasDrawer.init();
+    //CanvasDrawer.config(20, 50, null);
+    //CanvasDrawer.draw();
+
     //CanvasDrawer.draw();
     //CanvasDrawer.config(1, 10);
     //CanvasDrawer.draw();
@@ -32,7 +35,7 @@ jQuery(document).ready(function ($) {
         console.log('Winner is ' + winIndex);
 
         CanvasDrawer.config(instructionsFromPlayer[0], instructionsFromPlayer[1], function(){
-            CanvasDrawer.stopDraw();
+            //CanvasDrawer.stopDraw();
             afterAnimationCallback();
         });
         CanvasDrawer.draw();
@@ -41,8 +44,6 @@ jQuery(document).ready(function ($) {
     function OnGameStateChange(state) {
         $('#game-status').text('Game State ' + state);
     }
-
-
 });
 //
 //function disconnect() {

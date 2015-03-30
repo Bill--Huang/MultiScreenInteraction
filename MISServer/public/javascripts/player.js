@@ -3,6 +3,8 @@
  */
 jQuery(document).ready(function ($) {
 
+    FastClick.attach(document.body);
+
 	var StateString = {
 		'-1': '点击屏幕，连接游戏',
 		'0': '等待另一名玩家连接游戏',
