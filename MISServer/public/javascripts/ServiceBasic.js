@@ -139,16 +139,24 @@ var ServiceBasic = {
             }
 
             // call end event
-            self.OnGameEnd(self.instructionsFromPlayer, win, function() {
+            self.OnGameEnd(self.instructionsFromPlayer, win, function(d1, d2) {
                 // send request
                 // send end to server
                 var data = {
                     role: 'appgame',
                     message: 'gameend_request',
                     payload: {
-                        winIndex: win
+                        winIndex: win,
+                        distance: {
+                            '1': d1,
+                            '2': d2
+                        }
                     }
                 };
+
+                console.log('1 路程: ' + (d1 - 2));
+                console.log('2 路程: ' + (d2 - 2));
+
 
                 ServiceBasic.send(data);
                 // reset

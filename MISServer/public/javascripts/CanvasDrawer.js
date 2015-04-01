@@ -11,7 +11,8 @@ var car = {
     y2: 0,
     width: 0,
     height: 0,
-    img: null,
+    img1: null,
+    img2: null,
     ramdomNum: 0,
 
     init: function(x, y, w, h, ctx) {
@@ -22,8 +23,10 @@ var car = {
         car.width = w;
         car.height = h;
 
-        car.img = new Image();
-        car.img.src = '../images/car.png';
+        car.img1 = new Image();
+        car.img1.src = '../images/car.png';
+        car.img2 = new Image();
+        car.img2.src = '../images/car2.png';
 
         car.draw(ctx);
 
@@ -33,9 +36,12 @@ var car = {
     },
 
     draw: function(ctx) {
-        car.img.onload = function(){
-            ctx.drawImage(car.img, car.x, car.y, car.width, car.height);
-            ctx.drawImage(car.img, car.x + 465, car.y, car.width, car.height);
+        car.img1.onload = function(){
+            ctx.drawImage(car.img1, car.x, car.y, car.width, car.height);
+        }
+
+        car.img2.onload = function(){
+            ctx.drawImage(car.img2, car.x + 465, car.y, car.width, car.height);
             //ctx.drawImage(car.img, car.x + car.containerW / 2, car.y, car.width, car.height);
         }
     },
@@ -58,8 +64,8 @@ var car = {
             // stop road animation, keep static
         }
 
-        ctx.drawImage(car.img, car.x, car.y1, car.width, car.height);
-        ctx.drawImage(car.img, car.x + 465, car.y2, car.width, car.height);
+        ctx.drawImage(car.img1, car.x, car.y1, car.width, car.height);
+        ctx.drawImage(car.img2, car.x + 465, car.y2, car.width, car.height);
 
         // car is at the random position, stop the car, end animation
         if(car.y1 == interval * (car.ramdomNum - 1)) {
@@ -85,7 +91,7 @@ var background = {
         background.height = h;
 
         background.img = new Image();
-        background.img.src = '../images/road2.jpg';
+        background.img.src = '../images/road3.jpg';
 
         background.draw(ctx);
     },
@@ -146,14 +152,21 @@ var CanvasDrawer = {
         var ctx = self.container.getContext('2d');
         ctx.clearRect(0,0, self.container.width, self.container.height);
 
-        background.init(0, self.height - 5000, self.width, 5000, ctx);
+        background.init(0, self.height - 6000, self.width, 6000, ctx);
         car.init(self.width / 2 - 280, self.height - 189, 91 ,189, ctx);
 
+    },
+
+    reset: function() {
+        CanvasDrawer.init();
+        CanvasDrawer.raf = 0;
+        CanvasDrawer.OnAnimationEnd = null;
     },
 
     config: function(p1Click, p2Click, OnAnimationEnd) {
         CanvasDrawer.player1Power = p1Click * 10;
         CanvasDrawer.player2Power = p2Click * 10;
+
         //if (CanvasDrawer.container.getContext) {
         //    var ctx = CanvasDrawer.container.getContext('2d');
         //    background.initDraw(ctx);
@@ -185,8 +198,8 @@ var CanvasDrawer = {
         self.player1Power = self.player1Power >= interval ? (self.player1Power - interval) : 0;
         self.player2Power = self.player2Power >= interval ? (self.player2Power - interval) : 0;
 
-        background.animate(ctx, self.player1Power, self.player1Power);
-        car.animate(ctx, self.player1Power, self.player1Power);
+        background.animate(ctx, self.player1Power, self.player2Power);
+        car.animate(ctx, self.player1Power, self.player2Power);
 
         if(self.player1Power == 0 && self.player2Power == 0) {
             console.log('Animation End');

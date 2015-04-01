@@ -23,6 +23,7 @@ jQuery(document).ready(function ($) {
 
     function OnGameStart() {
         console.log('On Game Start');
+        $('#text-img').attr('src', 'images/start.png');
     }
 
     function OnGameEnd(instructionsFromPlayer, winIndex, afterAnimationCallback) {
@@ -34,11 +35,43 @@ jQuery(document).ready(function ($) {
         }
         console.log('Winner is ' + winIndex);
 
+        var offset = instructionsFromPlayer[0] - instructionsFromPlayer[1];
+
+        if(offset > 7) {
+            instructionsFromPlayer[0] = instructionsFromPlayer[1] + (Math.random() * 5);
+        } else if(offset < -7) {
+            instructionsFromPlayer[1] = instructionsFromPlayer[0] + (Math.random() * 5);
+        }
+
         CanvasDrawer.config(instructionsFromPlayer[0], instructionsFromPlayer[1], function(){
             //CanvasDrawer.stopDraw();
-            afterAnimationCallback();
+            var p1s = Math.round(instructionsFromPlayer[0] * 1.7);
+            var p2s = Math.round(instructionsFromPlayer[1] * 1.7);
+            afterAnimationCallback(p1s, p2s);
+
+            // show distance text
+            $('#text-img').attr('src', 'images/distance.png');
+            $('#p1-score').text(p1s);
+            $('#p2-score').text(p2s);
+            $('#distance-container').css('display','block');
+
+            // 3s later, show end game
+            // 3s later show wait game
+            setTimeout(function(){
+                $('#text-img').attr('src', 'images/end.png');
+                setTimeout(function(){
+                    $('#text-img').attr('src', 'images/wait.png');
+                    // reset canvas
+                    CanvasDrawer.reset();
+                    $('#p1-score').text('');
+                    $('#p2-score').text('');
+                    $('#distance-container').css('display','none');
+                }, 4000);
+            }, 4000);
+
         });
         CanvasDrawer.draw();
+        $('#text-img').attr('src', '');
     }
 
     function OnGameStateChange(state) {

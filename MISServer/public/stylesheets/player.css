@@ -31,7 +31,7 @@ body {
 
 #main-container #text-container {
     position: absolute;
-    top: 50%;
+    top: 90%;
     width: 100%;
 }
 
@@ -40,4 +40,37 @@ body {
     text-align: center;
     margin: 14px;
 
+}
+
+#player-index-text {
+    position: fixed;
+    left: 0;
+    top: 0;
+    font-size: 80px;
+}
+
+#player-text {
+    position: fixed;
+    left: 0;
+    top: 80px;
+}
+
+#rule-container {
+    font-size: 10px;
+    margin: 0;
+    color: #ffffff;
+    margin-left: 8%;
+    padding-top: 30px;
+    list-style:none
+
+}
+
+#engine-container {
+    width: 100%;
+    text-align: center;
+}
+
+#engine-container img {
+    margin: 10%;
+    width: 70%;
 }

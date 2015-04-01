@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
 	var StateString = {
 		'-1': '点击屏幕，连接游戏',
 		'0': '等待另一名玩家连接游戏',
-		'1': '在倒数 10 秒中，点击屏幕，为汽车蓄能',
+		'1': '',
 		'2': '游戏结束，刷新页面重新开始'
 	};
 
@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
 
 
 	$('body').click(function() {
-		if(currentState == -2) {
+        if(currentState == -2) {
 			// no connection
 			ServiceBasic.connect('player');
 			currentState == -1;
@@ -31,16 +31,26 @@ jQuery(document).ready(function ($) {
 		} else if(currentState == 1) {
 			// play
 			click++;
-			$('#result-text').text(click);
+			// do not show click num
+            // play click animation
+            if(click % 2 == 0) {
+                $('#engine-container img').attr('src', 'images/engine-1.png');
+            } else {
+                $('#engine-container img').attr('src', 'images/engine-2.png');
+            }
+
+			// $('#result-text').text(click);
 		} else if(currentState == 2) {
-			// end
-		}
+                // end
+            }
 	});
 
 
 	function OnConnection(index) {
 		if(index != null) {
-			$('#player-index-text').text('玩家 ' + (index + 1));
+			$('#player-index-text').text('' + (index + 1));
+            $('#player-text').text('玩家');
+
 		}
 	}
 
@@ -80,16 +90,21 @@ jQuery(document).ready(function ($) {
 
 	function OnGameEnd(winIndex, selfIndex) {
 		// reload page
-
+        var resultImg = 'images/win.png';
 		// show result
 		if(winIndex == selfIndex) {
 			// win
-			$('#result-text').text('胜利');
+			//$('#result-text').text('胜利');
 		} else if(winIndex == -1) {
-			$('#result-text').text('平局');
+            // tie
+            resultImg = 'images/tie.png';
 		} else {
-			$('#result-text').text('失败');
+            // lose
+			//$('#result-text').text('失败');
+            resultImg = 'images/lose.png';
 		}
+
+        $('#engine-container img').attr('src', resultImg);
 	}
 
 	function OnGameStateChange(state) {
