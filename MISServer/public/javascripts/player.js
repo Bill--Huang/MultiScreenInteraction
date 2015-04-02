@@ -3,6 +3,7 @@
  */
 jQuery(document).ready(function ($) {
 
+
     FastClick.attach(document.body);
 
 	var StateString = {
@@ -25,6 +26,7 @@ jQuery(document).ready(function ($) {
 			// no connection
 			ServiceBasic.connect('player');
 			currentState == -1;
+
 		} else if(currentState == -1) {
 			// wait
 
@@ -33,6 +35,8 @@ jQuery(document).ready(function ($) {
 			click++;
 			// do not show click num
             // play click animation
+
+
             if(click % 2 == 0) {
                 $('#engine-container img').attr('src', 'images/engine-1.png');
             } else {
@@ -64,6 +68,9 @@ jQuery(document).ready(function ($) {
 
 		console.log('On Game Start');
 
+        // change bg color
+        $('#main-container-bg').addClass('start-bg');
+
 		var IntervalObject = setInterval(function(){
 			if(countTime == waitTime) {
 				//
@@ -79,7 +86,7 @@ jQuery(document).ready(function ($) {
 				window.clearInterval(IntervalObject);
 
 				currentState = 2;
-				$('#countdown-text').text('');
+				$('#countdown-text').text('汽车冲刺中');
 
 			} else {
 				countTime++;
@@ -89,22 +96,26 @@ jQuery(document).ready(function ($) {
 	}
 
 	function OnGameEnd(winIndex, selfIndex) {
-		// reload page
+
+        //
+        $('#main-container-bg').removeClass('start-bg');
+        $('#countdown-text').text('');
+
+        // show result
         var resultImg = 'images/win.png';
-		// show result
-		if(winIndex == selfIndex) {
-			// win
-			//$('#result-text').text('胜利');
-		} else if(winIndex == -1) {
+
+        if (winIndex == -1) {
             // tie
             resultImg = 'images/tie.png';
-		} else {
+        } else if( winIndex != selfIndex) {
             // lose
-			//$('#result-text').text('失败');
             resultImg = 'images/lose.png';
-		}
+        }
 
-        $('#engine-container img').attr('src', resultImg);
+        $('#result-container img').attr('src', resultImg);
+
+        $('#result-container').css('display', 'block');
+        $('#engine-container').css('display', 'none');
 	}
 
 	function OnGameStateChange(state) {

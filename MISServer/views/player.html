@@ -15,7 +15,7 @@
 		<!-- <script src="/json.js"></script> <!-- for ie -->
 		<link rel="stylesheet" href="stylesheets/player.css">
 	</head>
-	<body ontouchmove="event.preventDefault()">
+	<body ontouchstart="event.preventDefault()" ontouchmove="event.preventDefault()" oncontextmenu="return false" onselectstart="return false">
 		<!--<h1>Player Page</h1>-->
 		<!--<div><h1 id="game-role">Role</h1></div>-->
 		<!--<div><h1 id="game-status">Waiting for input</h1></div>-->
@@ -35,6 +35,11 @@
                 <div id="engine-container">
                     <img src="images/engine-1.png">
                 </div>
+
+                <div id="result-container">
+                    <img src="images/win.png">
+                </div>
+
                 <div id="text-container">
 					<h2 id="countdown-text"></h2>
 					<h4 id="player-index-text">0</h4>

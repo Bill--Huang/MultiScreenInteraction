@@ -27,6 +27,18 @@ body {
 #main-container-bg {
     height: 100%;
     background-color: black;
+
+    transition: background-color 1.5s;
+}
+
+.start-bg {
+    background-color: #fc863e !important;
+    transition: background-color 1.5s;
+}
+
+.end-bg {
+    background-color: #03b7eb !important;
+    transition: background-color 1.5s;
 }
 
 #main-container #text-container {
@@ -72,5 +84,17 @@ body {
 
 #engine-container img {
     margin: 10%;
+    width: 70%;
+}
+
+#result-container {
+    display: none;
+
+    width: 100%;
+    text-align: center;
+}
+
+#result-container img {
+    margin-top: 35%;
     width: 70%;
 }

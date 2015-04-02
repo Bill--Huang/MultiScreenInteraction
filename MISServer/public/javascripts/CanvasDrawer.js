@@ -38,11 +38,11 @@ var car = {
     draw: function(ctx) {
         car.img1.onload = function(){
             ctx.drawImage(car.img1, car.x, car.y, car.width, car.height);
-        }
 
-        car.img2.onload = function(){
-            ctx.drawImage(car.img2, car.x + 465, car.y, car.width, car.height);
-            //ctx.drawImage(car.img, car.x + car.containerW / 2, car.y, car.width, car.height);
+            car.img2.onload = function(){
+                ctx.drawImage(car.img2, car.x + 465, car.y, car.width, car.height);
+                //ctx.drawImage(car.img, car.x + car.containerW / 2, car.y, car.width, car.height);
+            }
         }
     },
 
@@ -153,8 +153,10 @@ var CanvasDrawer = {
         ctx.clearRect(0,0, self.container.width, self.container.height);
 
         background.init(0, self.height - 6000, self.width, 6000, ctx);
-        car.init(self.width / 2 - 280, self.height - 189, 91 ,189, ctx);
 
+        setTimeout(function(){
+            car.init(self.width / 2 - 280, self.height - 189, 91 ,189, ctx);
+        }, 2000);
     },
 
     reset: function() {
