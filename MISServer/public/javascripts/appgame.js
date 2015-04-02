@@ -23,6 +23,7 @@ jQuery(document).ready(function ($) {
 
     function OnGameStart() {
         console.log('On Game Start');
+        $('#text-container').css('display', 'block');
         $('#text-img').attr('src', 'images/start.png');
     }
 
@@ -50,6 +51,7 @@ jQuery(document).ready(function ($) {
             afterAnimationCallback(p1s, p2s);
 
             // show distance text
+            $('#text-container').css('display', 'block');
             $('#text-img').attr('src', 'images/distance.png');
             $('#p1-score').text(p1s);
             $('#p2-score').text(p2s);
@@ -58,8 +60,10 @@ jQuery(document).ready(function ($) {
             // 3s later, show end game
             // 3s later show wait game
             setTimeout(function(){
+                $('#text-container').css('display', 'block');
                 $('#text-img').attr('src', 'images/end.png');
                 setTimeout(function(){
+                    $('#text-container').css('display', 'block');
                     $('#text-img').attr('src', 'images/wait.png');
                     // reset canvas
                     CanvasDrawer.reset();
@@ -71,7 +75,9 @@ jQuery(document).ready(function ($) {
 
         });
         CanvasDrawer.draw();
-        $('#text-img').attr('src', '');
+
+        $('#text-container').css('display', 'none');
+        //$('#text-img').attr('src', '');
     }
 
     function OnGameStateChange(state) {
