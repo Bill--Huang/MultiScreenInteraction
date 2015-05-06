@@ -5,7 +5,12 @@
 /*
  * Console.log formate
  */
-exports.cl = function(from, message) {
+exports.cl = function(from, message, suffix) {
     console.log('\n[' + from + ' Log] ->');
-    console.log('Log: ' + message + '\n');
+    if(suffix != undefined || suffix != null || suffix != '') {
+
+    } else {
+        suffix = '';
+    }
+    console.log('Log: ' + message + suffix + '\n');
 }

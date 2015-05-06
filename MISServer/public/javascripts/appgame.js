@@ -13,8 +13,21 @@ jQuery(document).ready(function ($) {
 
     ServiceBasic.init(OnConnection, OnGameStart, OnGameEnd, OnGameStateChange, OnError);
     ServiceBasic.connect('appgame');
-    function OnConnection() {
+    function OnConnection(uuid) {
+        console.log('On Game Connection');
+        // generate qrcode
+        console.log(uuid);
 
+
+        var playerLink = "http://" + document.domain + ":3000/player?uuid=" + uuid;
+        console.log(playerLink);
+        $('#qrcode-container').qrcode(
+            {
+                width: 100,
+                height: 100,
+                text: playerLink
+            }
+        );
     }
 
     function OnError(message) {

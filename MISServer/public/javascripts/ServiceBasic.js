@@ -60,6 +60,8 @@ var ServiceBasic = {
             console.log(data);
             if(data['message'] == 'register_failed') {
                 self.OnConnectionError('玩家数已满，请先等待');
+            } else if(data['message'] == 'link_outdated') {
+                self.OnConnectionError('链接已过时，请重新扫码连接');
             }
         });
 
@@ -95,7 +97,7 @@ var ServiceBasic = {
 
                     self.currentGameState = self.GameState['Waiting'];
                     // update UI
-                    self.OnConnection(null);
+                    self.OnConnection(payload.uuid);
                     self.OnGameStateChange(self.currentGameState);
                     //self.updateGameRole();
                     break;
