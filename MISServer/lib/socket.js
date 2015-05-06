@@ -39,8 +39,7 @@ module.exports = {
         self.sio.of('/appgame').on('connection', function(socket) {
 
             var tempSocketManager = self.socketManager.sm();
-            tempSocketManager.uuid = self.uuidGenerator.v1();
-            tempSocketManager.init();
+            tempSocketManager.init(self, self.uuidGenerator.v1());
             tempSocketManager.addAppSocket(socket);
 
             self.socketManagersArray[tempSocketManager.uuid] = tempSocketManager;
@@ -68,6 +67,13 @@ module.exports = {
         });
 
         self.utilities.cl('Server', 'Init SocketIO');
+    },
+
+    remove: function(id) {
+        var self = this;
+        delete self.socketManagersArray[id];
+
+        self.utilities.cl('Server', 'App Socket is deleted', " ##### uuid:" + id)
     },
 
     contain: function(id) {

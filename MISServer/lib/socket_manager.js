@@ -19,18 +19,19 @@ module.exports.sm = function() {
 
         uuid: -1,
 
-        init: function () {
+        parent: null,
+
+        init: function (parent, id) {
             var self = this;
+
+            self.parent = parent;
+            self.uuid = id;
 
             self.playerSockets[0] = null;
             self.playerSockets[1] = null;
 
-            //console.log(self);
-
             self.utilities = require('./utilities_function');
             self.utilities.cl('Server', 'New A Sockets Manager Room', " ##### uuid:" + self.uuid);
-
-            //console.log(self.uuid);
         },
 
         /*
@@ -205,6 +206,7 @@ module.exports.sm = function() {
             self.utilities.cl('Server', 'App have been removed', " ##### uuid:" + self.uuid);
 
             //TODO: remove itself
+            self.parent.remove(self.uuid);
         },
 
         removePlayerSocket: function (socket) {
