@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
         console.log(uuid);
 
 
-        var playerLink = "http://" + document.domain + ":3000/player?uuid=" + uuid;
+        var playerLink = "http://" + document.domain + ":3330/player?uuid=" + uuid;
         console.log(playerLink);
         $('#qrcode-container').qrcode(
             {
