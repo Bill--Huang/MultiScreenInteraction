@@ -1,0 +1,5 @@
+#!/bin/sh
+
+#comments
+cd ../bin
+# nohup node wwww > mis.log &
